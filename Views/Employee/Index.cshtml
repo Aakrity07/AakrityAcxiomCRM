@@ -1,0 +1,48 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<AakrityAcxiom.Models.Employee>
+
+@{
+    ViewData["Title"] = "Employee List";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm p-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="text-primary">Employee List</h2>
+            <a href="/Employee/Create" class="btn btn-primary">+ Add Employee</a>
+        </div>
+
+        <table class="table table-bordered table-striped text-center">
+            <thead class="table-primary">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var emp in Model)
+                {
+                    <tr>
+                        <td>@emp.EmployeeId</td>
+                        <td>@emp.EmployeeName</td>
+                        <td>@emp.Email</td>
+                        <td>@emp.Department</td>
+                        <td>
+                            <a href="/Employee/Details/@emp.EmployeeId" class="btn btn-info btn-sm">Details</a>
+                            <a href="/Employee/Edit/@emp.EmployeeId" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="/Employee/Delete/@emp.EmployeeId" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

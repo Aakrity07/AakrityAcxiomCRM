@@ -1,0 +1,107 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model AakrityAcxiom.Models.ReportDashboardVM;
+
+@{
+    ViewData["Title"] = "CRM Summary Report";
+}
+
+<!-- TOP BAR -->
+<div class="d-flex align-items-center justify-content-between p-3 shadow-sm"
+     style="background:#03A9F4; color:white;">
+    <h2 class="m-0">Axiomconsulting</h2>
+
+    <div class="d-flex align-items-center">
+        <span class="me-2">Admin</span>
+
+        <img src="/images/profile1.png"
+             width="40" height="40"
+             style="border-radius:50%; border:2px solid white;" />
+    </div>
+</div>
+
+
+<div class="container mt-4">
+
+    <!-- TITLE -->
+    <h3 class="fw-bold">CRM Summary Report</h3>
+
+    <!-- CARDS ROW -->
+    <div class="row mt-4">
+
+        <div class="col-md-6 mb-3">
+            <div class="card p-4 shadow-sm">
+                <h5>Total Customers</h5>
+                <h2 class="text-primary">@Model.TotalCustomers</h2>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <div class="card p-4 shadow-sm">
+                <h5>Total Employees</h5>
+                <h2 class="text-success">@Model.TotalEmployees</h2>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- RECENT CUSTOMERS -->
+    <div class="card p-4 mt-4 shadow-sm">
+        <h4 class="fw-bold">Recent Customers</h4>
+
+        <table class="table mt-3">
+            <thead class="table-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var c in Model.RecentCustomers)
+                {
+                    <tr>
+                        <td>@c.CustomerName</td>
+                        <td>@c.Address/td>
+                        <td>@c.Phone</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- RECENT EMPLOYEES -->
+    <div class="card p-4 mt-4 shadow-sm mb-5">
+        <h4 class="fw-bold">Recent Employees</h4>
+
+        <table class="table mt-3">
+            <thead class="table-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Position</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var e in Model.RecentEmployees)
+                {
+                    <tr>
+                        <td>@e.EmployeeName</td>
+                        <td>@e.Email</td>
+                        <td>@e.Department</td>
+                        
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>

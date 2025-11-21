@@ -1,0 +1,118 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model AakrityAcxiom.Models.UserRegister
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Registration</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            /* LOGO THEME MATCHED COLORS */
+            background: #123552; /*linear-gradient(135deg, #6C3483, #8E44AD, #A569BD);*/
+            height: 100vh;
+            /* PERFECT CENTER */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .register-box {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 40px;
+            width: 480px;
+            border-radius: 20px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 0 25px rgba(0,0,0,0.35);
+            text-align: center;
+            /* Center the box floating */
+            margin: auto;
+        }
+
+            .register-box img {
+                width: 130px;
+                margin-bottom: 15px;
+            }
+
+        h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: white;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        input {
+            width: 90%;
+            padding: 15px;
+            margin: 12px 0;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+        }
+
+        button {
+            width: 95%;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            background-color: #F4D03F;
+            color: #6C3483;
+        }
+
+            button:hover {
+                background-color: #F8E275;
+            }
+
+        .login-link {
+            margin-top: 20px;
+            display: block;
+            font-size: 18px;
+            color: #F4D03F;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+            .login-link:hover {
+                color: #F8E275;
+                text-decoration: underline;
+            }
+    </style>
+</head>
+
+<body>
+
+    <div class="register-box">
+
+        <img src="/images/acxiom.png" />
+
+        <h2>User Registration</h2>
+
+        <form asp-action="Register" method="post">
+
+            <input type="text" name="UserName" placeholder="Enter User Name" required />
+
+            <input type="email" name="Email" placeholder="Enter Email" required />
+
+            <input type="password" name="Password" placeholder="Enter Password" required />
+
+            <button type="submit">Register</button>
+
+        </form>
+        <a href="/Authentication/Login" class="login-link">Already have an account? Login</a>
+
+    </div>
+
+</body>
+</html>

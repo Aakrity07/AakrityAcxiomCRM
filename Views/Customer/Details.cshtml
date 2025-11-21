@@ -1,0 +1,20 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model AakrityAcxiom.Models.Customer
+
+<div class="container mt-4">
+    <div class="card shadow-sm p-4">
+        <h2 class="text-info mb-4">Customer Details</h2>
+
+        <p><strong>ID:</strong> @Model.CustomerId</p>
+        <p><strong>Name:</strong> @Model.CustomerName</p>
+        <p><strong>Email:</strong> @Model.Address</p>
+        <p><strong>Department:</strong> @Model.Phone</p>
+
+        <a href="/Customer/Edit/@Model.CustomerId" class="btn btn-warning">Edit</a>
+        <a href="/Customer" class="btn btn-secondary">Back</a>
+    </div>
+</div>

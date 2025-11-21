@@ -1,0 +1,48 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<AakrityAcxiom.Models.Customer>
+
+@{
+    ViewData["Title"] = "Customer List";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm p-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="text-primary">Customer List</h2>
+            <a href="/Customer/Create" class="btn btn-primary">+ Add Customer</a>
+        </div>
+
+        <table class="table table-bordered table-striped text-center">
+            <thead class="table-primary">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Phone no</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var cus in Model)
+                {
+                    <tr>
+                        <td>@cus.CustomerId</td>
+                        <td>@cus.CustomerName</td>
+                        <td>@cus.Address</td>
+                        <td>@cus.Phone</td>
+                        <td>
+                            <a href="/Customer/Details/@cus.CustomerId" class="btn btn-info btn-sm">Details</a>
+                            <a href="/Customer/Edit/@cus.CustomerId" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="/Customer/Delete/@cus.CustomerId" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

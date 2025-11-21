@@ -1,0 +1,84 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: #123552; /*linear-gradient(135deg, #1A73E8, #0D47A1);*/
+        color: white;
+        text-align: center;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header-logo img {
+        width: 220px; /* BIG LOGO */
+        margin-top: 40px;
+    }
+
+    .main-section {
+        margin-top: 40px;
+    }
+
+    h1 {
+        font-size: 48px; /* BIG HEADING */
+        font-weight: 800;
+        margin-bottom: 10px;
+    }
+
+    h3 {
+        font-size: 24px; /* BIG SUB TEXT */
+        font-weight: 400;
+        margin-bottom: 40px;
+        opacity: 0.9;
+    }
+
+    .btn-large {
+        padding: 15px 40px; /* BIG BUTTONS */
+        font-size: 20px;
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        margin: 10px;
+        width: 200px;
+    }
+
+    .btn-register {
+        background-color: #34A853;
+        color: white;
+    }
+
+    .btn-login {
+        background-color: #1E88E5;
+        color: white;
+    }
+
+    .btn-register:hover {
+        background-color: #2C8C46;
+    }
+
+    .btn-login:hover {
+        background-color: #1669BB;
+    }
+</style>
+
+
+<div class="header-logo">
+    <img src="~/images/acxiom.png" alt="Acxiom Logo" />
+</div>
+
+<div class="main-section">
+    <h1>Welcome to Acxiom Consulting</h1>
+    <h3>Empowering Businesses with Technology, Strategy & Innovation</h3>
+
+    <a href="/Authentication/Register">
+        <button class="btn-large btn-register">Register</button>
+    </a>
+
+    <a href="/Authentication/Login">
+        <button class="btn-large btn-login">Login</button>
+    </a>
+</div>

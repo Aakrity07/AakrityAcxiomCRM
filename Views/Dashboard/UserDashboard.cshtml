@@ -1,0 +1,318 @@
+﻿@model AakrityAcxiom.Models.SearchViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #0a2a43, #0f3b52);
+        color: white;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    /* LEFT SIDEBAR */
+    .sidebar {
+        width: 250px;
+        height: 100vh;
+        background: rgba(10, 40, 70, 0.95);
+        padding: 30px;
+        float: left;
+    }
+
+        .sidebar h2 {
+            margin-bottom: 30px;
+            font-size: 26px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+    .menu-item {
+        display: block;
+        padding: 12px 10px;
+        font-size: 18px;
+        margin-bottom: 15px;
+        text-decoration: none;
+        color: #dce6f1;
+        transition: 0.3s;
+        border-radius: 6px;
+    }
+
+        .menu-item:hover {
+            background-color: #0e4a6b;
+            color: white;
+        }
+
+    /* TOP BAR */
+    .topbar {
+        height: 70px;
+        background: rgba(12, 64, 95, 0.8);
+        width: calc(100% - 250px);
+        margin-left: 250px;
+        padding: 18px 30px;
+        font-size: 22px;
+        font-weight: 500;
+        color: #fff;
+    }
+
+    /* MAIN CONTENT */
+    .content {
+        margin-left: 250px;
+        padding: 30px;
+    }
+
+    .card-container {
+        display: flex;
+        gap: 20px;
+    }
+
+    .card {
+        width: 250px;
+        padding: 25px;
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(12px);
+        border-radius: 12px;
+        color: white;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+        transition: 0.3s;
+        cursor: pointer;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+    .yellow-btn {
+        margin-top: 20px;
+        background: #e0b21a;
+        padding: 10px 18px;
+        border: none;
+        color: #000;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+        .yellow-btn:hover {
+            background: #ffcc33;
+        }
+</style>
+
+<div class="sidebar">
+    <h2>CRM Dashboard</h2>
+
+    <a asp-controller="Dashboard" asp-action="UserDashboard" class="menu-item">Dashboard</a>
+    <a asp-controller="Customer" asp-action="Index" class="menu-item">Customers</a>
+    <a asp-controller="Employee" asp-action="Index" class="menu-item">Employees</a>
+    <a asp-controller="Report" asp-action="Index" class="menu-item">Reports</a>
+    <a asp-controller="Dashboard" asp-action="Settings" class="menu-item">Settings</a>
+
+</div>
+
+<div class="topbar">
+    Welcome, @Context.Session.GetString("UserName")
+</div>
+<br />
+
+<form method="get" asp-controller="Dashboard" asp-action="UserDashboard"
+      style="margin-left:250px; padding:20px; background:rgba(255,255,255,0.1);">
+
+    <input type="text" name="query" placeholder="Search Customers, Employees..."
+           style="width:300px; padding:10px; border-radius:6px; border:none;" />
+
+    <button type="submit" 
+            style="padding:10px 16px; border:none; background:#e0b21a;
+                   border-radius:6px; cursor:pointer; font-weight:600;">
+        Search
+    </button>
+</form>
+
+
+<div class="content">
+
+    @if (Model.Customers.Any() || Model.Employees.Any())
+    {
+        <div style="margin-left:250px; padding:20px; margin-top:20px; background:rgba(255,255,255,0.1);">
+
+            <h2>Search Results</h2>
+
+            <h3>Customers</h3>
+            <ul>
+                @foreach (var c in Model.Customers)
+                {
+                    <li>@c.CustomerName — @c.Phone - @c.Address </li>
+                }
+            </ul>
+
+            <h3>Employees</h3>
+            <ul>
+                @foreach (var e in Model.Employees)
+                {
+                    <li>@e.EmployeeName — @e.Email - @e.Department</li>
+                }
+            </ul>
+
+        </div>
+    }
+
+
+    <h2>Overview</h2>
+
+    <div class="card-container">
+        <div class="card">
+            <h3>Total Employees</h3>
+            <p>58 Employees working</p>
+        </div>
+
+        <div class="card">
+            <h3>Total Customers</h3>
+            <p>120 Active Customers</p>
+        </div>
+
+        <div class="card">
+            <h3>Reports</h3>
+            <p>View sales & activity reports</p>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* @{
+    ViewData["Title"] = "Dashboard";
+    var username = Context.Session.GetString("UserName");
+}
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #123552; /* #f2f7ff;  same as Register/Login */
+    }
+
+    .dashboard-container {
+        width: 60%;
+        margin: 70px auto;
+        padding: 40px;
+        background-color: #123552;
+        ;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        border-top: 5px solid #123552;
+        ; /* SAME blue theme */
+    }
+
+    .logo {
+        width: 120px;
+        margin-bottom: 15px;
+    }
+
+    h2 {
+        color: white; /* same blue */
+        font-size: 32px;
+        margin-bottom: 10px;
+        font-weight: 700;
+    }
+
+    .welcome-text {
+        font-size: 22px;
+        margin-top: 10px;
+        color: white;
+        font-weight: 500;
+    }
+
+    .user-card {
+        background-color: #e3f2fd; /* soft light blue */
+        padding: 25px;
+        margin-top: 25px;
+        border-radius: 10px;
+        text-align: left;
+        font-size: 18px;
+        box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+        border-left: 5px solid #123552;
+    }
+
+    .logout-btn {
+        margin-top: 30px;
+        padding: 12px 25px;
+        font-size: 18px;
+        background-color: #e53935;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        transition: 0.3s;
+    }
+
+        .logout-btn:hover {
+            background-color: #b71c1c;
+        }
+</style>
+
+<div class="dashboard-container">
+
+    <img src="/images/acxiom.png" class="logo" />
+
+    <h2>Welcome to Acxiom Dashboard</h2>
+
+    <p class="welcome-text">Hello, <strong>@username</strong> 👋</p>
+
+    <div class="user-card">
+        <p><strong>User Information</strong></p>
+        <p><b>Name:</b> @username</p>
+        <p><b>Email:</b> @Context.Session.GetString("Email")</p>
+        @* <p><b>User ID:</b> @Context.Session.GetInt32("UserId")</p> *@
+
+    @*</div>
+
+    <a href="/Authentication/Logout" class="logout-btn">Logout</a>
+</div> *@
